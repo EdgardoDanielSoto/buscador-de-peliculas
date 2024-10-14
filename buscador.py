@@ -129,7 +129,7 @@ class BuscadorPeliculas:
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    modelo = ListaPeliculas('peliculas.json')
+    modelo = ListaPeliculas('portadas/peliculas.json')
     vista = MainWindow()
     controlador = BuscadorPeliculas(modelo, vista)
     vista.show()
