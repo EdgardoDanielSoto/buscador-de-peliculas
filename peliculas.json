@@ -4,83 +4,95 @@
         "actores": ["Ricardo Darín", "Soledad Villamil","Pablo Rago","Guillermo Francella"],
         "sinopsis": "Benjamín Espósito es un oficial de un Juzgado de Instrucción de Buenos Aires que acaba /n de jubilarse. Su sueño es escribir una novela y, para ello, intentará dar solución a un caso abierto desde hace varias décadas, del cual fue testigo y protagonista. Reviviendo el caso, vuelve también a su memoria el recuerdo de una mujer, a quien ha amado en silencio durante todos esos años.",
         "pais": "Argentina",
-        "imagen": "portadas/el_secreto_de_sus_ojos.jpeg"
+        "imagen": "portadas/el_secreto_de_sus_ojos.jpeg",
+        "Puntuacion": 9
     },
     {
         "titulo": "Relatos salvajes",
         "actores": ["Ricardo Darín", "Leonardo Sbaraglia", "Darío Grandinetti"],
         "sinopsis": "Un viaje en avión, el encuentro con alguien del pasado, un pinchazo en una carretera, una multa, un atropello o una boda; historias independientes con un denominador común: la violencia sin control ni causa aparente, que impulsa a perder el control. En seis episodios diferentes los personajes se verán empujados a situaciones al borde del abismo, perdiendo el control de sus vidas.",
         "pais": "Argentina",
-        "imagen": "portadas/relatos_salvajes.jpeg"
+        "imagen": "portadas/relatos_salvajes.jpeg",
+        "Puntuacion": 8
     },
     {
         "titulo": "Nueve reinas",
         "actores": ["Ricardo Darín", "Gastón Pauls","Leticia Brédice"],
         "sinopsis": "Dos estafadores intentan engañar a un coleccionista de sellos vendiéndole una hoja de sellos raros falsificados.",
         "pais": "Argentina",
-        "imagen": "portadas/nueve_reinas_.jpeg"
+        "imagen": "portadas/nueve_reinas_.jpeg",
+        "Puntuacion": 9
     },
     {
         "titulo": "El hijo de la novia",
         "actores": ["Ricardo Darín", "Héctor Alterio","Norma Aleandro"],
         "sinopsis": "Un hombre enfrenta una crisis de mediana edad y la enfermedad de Alzheimer de su madre.",
         "pais": "Argentina",
-        "imagen": "portadas/el_hijo_de_la_novia.jpeg"
+        "imagen": "portadas/el_hijo_de_la_novia.jpeg",
+        "Puntuacion": 9.5
     },
     {
         "titulo": "Bañeros 2, la playa loca",
         "actores": ["Emilio Disi", "Guillermo Francella","Gino Renni"],
         "sinopsis": "Guillermo y Emilio trabajan como encargados de mantenimiento en un club de San Isidro. Ellos sueñan con ser millonarios, pero su fantasía se vuelve lejana cuando son despedidos. Juntos deciden probar suerte en Mar del Plata.",
         "pais": "Argentina",
-        "imagen": "portadas/los_bañ_mas_locos_del_mun_II.jpeg"
+        "imagen": "portadas/los_bañ_mas_locos_del_mun_II.jpeg",
+        "Puntuacion": 5
     },
     {
         "titulo": "Caballos salvajes",
         "actores": ["Leonardo Sbaraglia", "Cecilia Dopazo","Hector Alterio"],
         "sinopsis": "José (Héctor Alterio) es un veterano anarquista de setenta años. Durante toda su vida ha sabido cómo y por qué vale la pena jugarse la vida. Por eso, cuando un día se siente estafado por el banco donde guarda sus ahorros, decide atracarlo y darse a la fuga.",
         "pais": "Argentina",
-        "imagen": "portadas/caballo_salvaje.jpeg"
+        "imagen": "portadas/caballo_salvaje.jpeg",
+        "Puntuacion": 7
     },
     {
         "titulo": "La historia oficial",
         "actores": ["Norma Aleandro", "Héctor Alterio","Chunchuna Villafañe"],
         "sinopsis": "Durante la última dictadura cívico-militar argentina, Alicia, una profesora de Historia y su marido Roberto, un empresario que hace negocios con los militares, adoptan una niña a quien llaman Gaby. Años después, en 1983, durante los últimos meses del gobierno militar, Ana, una amiga exiliada de Alicia, regresa al país.",
         "pais": "Argentina",
-        "imagen": "portadas/la_historia_oficial.jpeg"
+        "imagen": "portadas/la_historia_oficial.jpeg",
+        "Puntuacion": 8
     },
     {
         "titulo": "Elefante blanco",
         "actores": ["Ricardo Darín", "Jérémie Renier","Martina Gusman"],
         "sinopsis": "Narra la historia de amistad de dos curas, JULIÁN y NICOLÁS, que tras sobrevivir un intento de asesinato por parte del Ejército durante su trabajo en Centroamérica, se asientan en una barriada de Buenos Aires para desarrollar su apostolado y labor social.",
         "pais": "Argentina",
-        "imagen": "portadas/elefante_blanco.jpeg"
+        "imagen": "portadas/elefante_blanco.jpeg",
+        "Puntuacion": 7
     },
     {
         "titulo": "Esperando la carroza",
         "actores": ["Luis Brandoni", "China Zorrilla","Antonio Gasalla"],
         "sinopsis": "Esta es la historia de una familia compuesta por una madre anciana y esclerótica, mamá Cora y sus cuatro hijos, Sergio, Jorge, Antonio y Emilia. Mamá Cora vive en casa de Jorge y Susana, un hogar pequeño lleno de privaciones, donde la convivencia se hace difícil, debido a la torpeza y falta de memoria de la anciana.",
         "pais": "Argentina",
-        "imagen": "portadas/esperando_la_carroza.jpeg"
+        "imagen": "portadas/esperando_la_carroza.jpeg",
+        "Puntuacion": 9.5
     },
     {
         "titulo": "Los bañeros más locos del mundo",
         "actores": ["Emilio Disi","Gino Renni", "Jorge Porcel"],
         "sinopsis": "Los integrantes de la Brigada Explosiva pasan sus vacaciones en Mar del Plata y rápidamente se quedan sin dinero. Empiezan a trabajar como bañeros y descubren a una banda de delincuentes. Tercer film de la serie de la brigada, esta vez con Carlos Galettini detrás de cámara.",
         "pais": "Argentina",
-        "imagen": "portadas/los_bañ_mas_locos_del_mun.jpeg"
+        "imagen": "portadas/los_bañ_mas_locos_del_mun.jpeg",
+        "Puntuacion": 7
     },
     {
         "titulo": "Bañeros 3, Todopoderosos",
         "actores": ["Emilio Disi", "Gianella Neyra","Luciano Castro","Pachu Peña","Pablo granados"],
         "sinopsis": "Tres empleados de un lujoso balneario trabajan juntos para detener a una banda que desea manipular los deseos de la gente con una pócima.",
         "pais": "Argentina",
-        "imagen": "portadas/los_bañ_mas_locos_del_mun_III.jpeg"
+        "imagen": "portadas/los_bañ_mas_locos_del_mun_III.jpeg",
+        "Puntuacion": 7
     },
      {
         "titulo": "Bañeros 4, Los rompeolas",
         "actores": ["Emilio Disi", "Gianella Neyra","Luciano Castro","Pachu Peña"],
         "sinopsis": "Los nuevos bañeros, junto a unas espectaculares bañeras llamadas Karen y Stefi (Interpretadas por Stefania Xipolitakis y Karina Jelinek) llegarán a Mar del Plata con divertidos gags en la playa, ingeniosos inventos, novedosas trampas e imitaciones y con la ayuda de los animales marinos del Acuario se enfrentarán a un malvado empresario mafioso, en un espectacular y divertido final.",
         "pais": "Argentina",
-         "imagen": "portadas/bañeros_III.jpeg"
+         "imagen": "portadas/bañeros_III.jpeg",
+         "Puntuacion": 6
     }
 ]
