@@ -55,15 +55,28 @@ class Ui_SegundaVentana(object):
         self.descripcion_texto.setFrameShadow(QFrame.Shadow.Plain)
         self.verticalLayout_3 = QVBoxLayout(self.descripcion_texto)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.encabezado_sinopsis = QLabel(self.descripcion_texto)
+        self.encabezado_sinopsis.setObjectName(u"encabezado_sinopsis")
+
+        self.verticalLayout_3.addWidget(self.encabezado_sinopsis)
+
         self.texto_sinopsis = QLabel(self.descripcion_texto)
         self.texto_sinopsis.setObjectName(u"texto_sinopsis")
         sizePolicy.setHeightForWidth(self.texto_sinopsis.sizePolicy().hasHeightForWidth())
         self.texto_sinopsis.setSizePolicy(sizePolicy)
+        self.texto_sinopsis.setStyleSheet(u"")
+        self.texto_sinopsis.setFrameShape(QFrame.Shape.Box)
 
         self.verticalLayout_3.addWidget(self.texto_sinopsis)
 
+        self.encabezado_elenco = QLabel(self.descripcion_texto)
+        self.encabezado_elenco.setObjectName(u"encabezado_elenco")
+
+        self.verticalLayout_3.addWidget(self.encabezado_elenco)
+
         self.nombres_actores = QLabel(self.descripcion_texto)
         self.nombres_actores.setObjectName(u"nombres_actores")
+        self.nombres_actores.setFrameShape(QFrame.Shape.Box)
 
         self.verticalLayout_3.addWidget(self.nombres_actores)
 
@@ -79,7 +92,9 @@ class Ui_SegundaVentana(object):
     def retranslateUi(self, SegundaVentana):
         SegundaVentana.setWindowTitle(QCoreApplication.translate("SegundaVentana", u"Informaci\u00f3n de pelicula ", None))
         self.imagen_descripcion.setText("")
+        self.encabezado_sinopsis.setText(QCoreApplication.translate("SegundaVentana", u"Sinopsis:", None))
         self.texto_sinopsis.setText("")
+        self.encabezado_elenco.setText(QCoreApplication.translate("SegundaVentana", u"Elenco:", None))
         self.nombres_actores.setText("")
     # retranslateUi
 

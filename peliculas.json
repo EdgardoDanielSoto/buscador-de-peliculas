@@ -3,7 +3,6 @@
         "titulo": "El secreto de sus ojos",
         "actores": ["Ricardo Darín", "Soledad Villamil","Pablo Rago","Guillermo Francella"],
         "sinopsis": "Benjamín Espósito es un oficial de un Juzgado de Instrucción de Buenos Aires que acaba /n de jubilarse. Su sueño es escribir una novela y, para ello, intentará dar solución a un caso abierto desde hace varias décadas, del cual fue testigo y protagonista. Reviviendo el caso, vuelve también a su memoria el recuerdo de una mujer, a quien ha amado en silencio durante todos esos años.",
-
         "pais": "Argentina",
         "imagen": "portadas/el_secreto_de_sus_ojos.jpeg"
     },
@@ -52,7 +51,7 @@
     {
         "titulo": "Elefante blanco",
         "actores": ["Ricardo Darín", "Jérémie Renier","Martina Gusman"],
-        "sinopsis": "narra la historia de amistad de dos curas, JULIÁN y NICOLÁS, que tras sobrevivir un intento de asesinato por parte del Ejército durante su trabajo en Centroamérica, se asientan en una barriada de Buenos Aires para desarrollar su apostolado y labor social.",
+        "sinopsis": "Narra la historia de amistad de dos curas, JULIÁN y NICOLÁS, que tras sobrevivir un intento de asesinato por parte del Ejército durante su trabajo en Centroamérica, se asientan en una barriada de Buenos Aires para desarrollar su apostolado y labor social.",
         "pais": "Argentina",
         "imagen": "portadas/elefante_blanco.jpeg"
     },

@@ -98,6 +98,13 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
+        <widget class="QLabel" name="encabezado_sinopsis">
+         <property name="text">
+          <string>Sinopsis:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QLabel" name="texto_sinopsis">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -105,13 +112,29 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Shape::Box</enum>
+         </property>
          <property name="text">
           <string/>
          </property>
         </widget>
        </item>
        <item>
+        <widget class="QLabel" name="encabezado_elenco">
+         <property name="text">
+          <string>Elenco:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QLabel" name="nombres_actores">
+         <property name="frameShape">
+          <enum>QFrame::Shape::Box</enum>
+         </property>
          <property name="text">
           <string/>
          </property>
