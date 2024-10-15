@@ -687,4 +687,7 @@
  </widget>
  <resources/>
  <connections/>
+ <slots>
+  <slot>_BuscadorPeliculas__buscar_por_titulo()</slot>
+ </slots>
 </ui>

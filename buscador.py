@@ -5,11 +5,12 @@ from PySide6.QtCore import Qt
 from listado_peliculas import ListaPeliculas
 from ventanas import MainWindow, SegundaVentana
 
-class _BuscadorPeliculas:
+class BuscadorPeliculas:
     def __init__(self, modelo, vista):
         self.__model = modelo
         self.__view = vista
         self.__peliculas = self.__model.get_peliculas()
+        self.__peliculas_mostradas = []
 
         titulos_peliculas = [p['titulo'] for p in self.__peliculas]
         self.__view._MainWindow__ui.texto_busqueda_pelicula.setCompleter(QCompleter(titulos_peliculas, self.__view))
@@ -24,65 +25,58 @@ class _BuscadorPeliculas:
         self.__view._MainWindow__ui.boton_buscar_pelicula.clicked.connect(self.__buscar_por_titulo)
         self.__view._MainWindow__ui.boton_buscar_actores.clicked.connect(self.__buscar_por_actores)
 
-        frames = [
-            ('primer_pelicula_catalogo', 'boton_nombre_pelicula_uno'),
-            ('segunda_pelicula_catalogo', 'boton_nombre_pelicula_dos'),
-            ('tercer_pelicula_catalogo', 'boton_nombre_pelicula_tres'),
-            ('cuarta_pelicula_catalogo', 'boton_nombre_pelicula_cuatro'),
-            ('quinta_pelicula_catalogo', 'boton_nombre_pelicula_cinco'),
-            ('sexta_pelicula_catalogo', 'boton_nombre_pelicula_seis'),
-            ('septima_pelicula_catalogo', 'boton_nombre_pelicula_siete'),
-            ('octava_pelicula_catalogo', 'boton_nombre_pelicula_ocho'),
-            ('novena_pelicula_catalogo', 'boton_nombre_pelicula_nueve'),
-            ('decima_pelicula_catalogo', 'boton_nombre_pelicula_diez')
+        self.__frames = [
+            ('imagen_pelicula_uno', 'boton_nombre_pelicula_uno'),
+            ('imagen_pelicula_dos', 'boton_nombre_pelicula_dos'),
+            ('imagen_pelicula_tres', 'boton_nombre_pelicula_tres'),
+            ('imagen_pelicula_cuatro', 'boton_nombre_pelicula_cuatro'),
+            ('imagen_pelicula_cinco', 'boton_nombre_pelicula_cinco'),
+            ('imagen_pelicula_seis', 'boton_nombre_pelicula_seis'),
+            ('imagen_pelicula_siete', 'boton_nombre_pelicula_siete'),
+            ('imagen_pelicula_ocho', 'boton_nombre_pelicula_ocho'),
+            ('imagen_pelicula_nueve', 'boton_nombre_pelicula_nueve'),
+            ('imagen_pelicula_diez', 'boton_nombre_pelicula_diez')
         ]
 
-        for i, (frame, boton) in enumerate(frames):
-            frame_widget = getattr(self.__view._MainWindow__ui, frame)
-            boton_widget = getattr(self.__view._MainWindow__ui, boton)
-            boton_widget.clicked.connect(lambda _, idx=i: self.abrir_segunda_ventana(idx))
+        self.__mostrar_todas_peliculas()
 
-        self.mostrar_todas_peliculas()
-
-    def abrir_segunda_ventana(self, index):
-        if index < len(self.__peliculas):
-            pelicula = self.__peliculas[index]
+    def __abrir_segunda_ventana(self, index):
+        if index < len(self.__peliculas_mostradas):
+            pelicula = self.__peliculas_mostradas[index]
             ventana_informacion = SegundaVentana(pelicula, self.__view)
             ventana_informacion.exec()
 
-    def mostrar_todas_peliculas(self):
-        labels = [
-            self.__view._MainWindow__ui.imagen_pelicula_uno, self.__view._MainWindow__ui.imagen_pelicula_dos, self.__view._MainWindow__ui.imagen_pelicula_tres,
-            self.__view._MainWindow__ui.imagen_pelicula_cuatro, self.__view._MainWindow__ui.imagen_pelicula_cinco, self.__view._MainWindow__ui.imagen_pelicula_seis,
-            self.__view._MainWindow__ui.imagen_pelicula_siete, self.__view._MainWindow__ui.imagen_pelicula_ocho, self.__view._MainWindow__ui.imagen_pelicula_nueve,
-            self.__view._MainWindow__ui.imagen_pelicula_diez
-        ]
-        botones = [
-            self.__view._MainWindow__ui.boton_nombre_pelicula_uno, self.__view._MainWindow__ui.boton_nombre_pelicula_dos, self.__view._MainWindow__ui.boton_nombre_pelicula_tres,
-            self.__view._MainWindow__ui.boton_nombre_pelicula_cuatro, self.__view._MainWindow__ui.boton_nombre_pelicula_cinco, self.__view._MainWindow__ui.boton_nombre_pelicula_seis,
-            self.__view._MainWindow__ui.boton_nombre_pelicula_siete, self.__view._MainWindow__ui.boton_nombre_pelicula_ocho, self.__view._MainWindow__ui.boton_nombre_pelicula_nueve,
-            self.__view._MainWindow__ui.boton_nombre_pelicula_diez
-        ]
-
+    def __mostrar_todas_peliculas(self):
         random.shuffle(self.__peliculas)
+        self.__peliculas_mostradas = self.__peliculas[:10]
 
-        for label, boton, pelicula in zip(labels, botones, self.__peliculas):
-            self.__view.set_pelicula_info(label, pelicula)
-            label.setVisible(True)
-            boton.setVisible(True)
+        for i, (label, boton) in enumerate(self.__frames):
+            label_widget = getattr(self.__view._MainWindow__ui, label)
+            boton_widget = getattr(self.__view._MainWindow__ui, boton)
+            pelicula = self.__peliculas_mostradas[i]
+
+            self.__view.set_pelicula_info(label_widget, pelicula)
+            label_widget.setVisible(True)
+            boton_widget.setVisible(True)
+            boton_widget.setText(pelicula['titulo'])
+            try:
+                boton_widget.clicked.disconnect()
+            except TypeError:
+                pass
+            boton_widget.clicked.connect(lambda _, idx=i: self.__abrir_segunda_ventana(idx))
 
     def __buscar_por_titulo(self):
         nombre_buscado = self.__view._MainWindow__ui.texto_busqueda_pelicula.text().strip().lower()
 
         if not nombre_buscado:
-            self.mostrar_todas_peliculas()
+            self.__mostrar_todas_peliculas()
             return
 
         resultados = [pelicula for pelicula in self.__peliculas if nombre_buscado in pelicula['titulo'].strip().lower()]
 
         if resultados:
             resultados.sort(key=lambda pelicula: pelicula['titulo'])
-            self.mostrar_resultados(resultados)
+            self.__mostrar_resultados(resultados)
         else:
             self.__view.mostrar_alerta("Película no encontrada")
 
@@ -104,41 +98,36 @@ class _BuscadorPeliculas:
 
         if resultados:
             resultados.sort(key=lambda pelicula: pelicula['titulo'])
-            self.mostrar_resultados(resultados)
+            self.__mostrar_resultados(resultados)
         else:
             self.__view.mostrar_alerta("Película no encontrada")
 
-    def mostrar_resultados(self, resultados):
-        labels = [
-            self.__view._MainWindow__ui.imagen_pelicula_uno, self.__view._MainWindow__ui.imagen_pelicula_dos, self.__view._MainWindow__ui.imagen_pelicula_tres,
-            self.__view._MainWindow__ui.imagen_pelicula_cuatro, self.__view._MainWindow__ui.imagen_pelicula_cinco, self.__view._MainWindow__ui.imagen_pelicula_seis,
-            self.__view._MainWindow__ui.imagen_pelicula_siete, self.__view._MainWindow__ui.imagen_pelicula_ocho, self.__view._MainWindow__ui.imagen_pelicula_nueve,
-            self.__view._MainWindow__ui.imagen_pelicula_diez
-        ]
-        botones = [
-            self.__view._MainWindow__ui.boton_nombre_pelicula_uno, self.__view._MainWindow__ui.boton_nombre_pelicula_dos, self.__view._MainWindow__ui.boton_nombre_pelicula_tres,
-            self.__view._MainWindow__ui.boton_nombre_pelicula_cuatro, self.__view._MainWindow__ui.boton_nombre_pelicula_cinco, self.__view._MainWindow__ui.boton_nombre_pelicula_seis,
-            self.__view._MainWindow__ui.boton_nombre_pelicula_siete, self.__view._MainWindow__ui.boton_nombre_pelicula_ocho, self.__view._MainWindow__ui.boton_nombre_pelicula_nueve,
-            self.__view._MainWindow__ui.boton_nombre_pelicula_diez
-        ]
+    def __mostrar_resultados(self, resultados):
+        self.__peliculas_mostradas = resultados[:10]
 
-        for label, boton in zip(labels, botones):
-            label.clear()
-            label.setVisible(False)
-            boton.setVisible(False)
+        for i, (label, boton) in enumerate(self.__frames):
+            label_widget = getattr(self.__view._MainWindow__ui, label)
+            boton_widget = getattr(self.__view._MainWindow__ui, boton)
 
-        for indice, (label, boton, pelicula) in enumerate(zip(labels, botones, resultados)):
-            self.__view.set_pelicula_info(label, pelicula)
-            label.setVisible(True)
-            boton.setVisible(True)
-            boton.setText(pelicula['titulo'])
-            boton.clicked.disconnect()
-            boton.clicked.connect(lambda _, idx=indice: self.abrir_segunda_ventana(idx))
+            if i < len(self.__peliculas_mostradas):
+                pelicula = self.__peliculas_mostradas[i]
+                self.__view.set_pelicula_info(label_widget, pelicula)
+                label_widget.setVisible(True)
+                boton_widget.setVisible(True)
+                boton_widget.setText(pelicula['titulo'])
+                try:
+                    boton_widget.clicked.disconnect()
+                except TypeError:
+                    pass
+                boton_widget.clicked.connect(lambda _, idx=i: self.__abrir_segunda_ventana(idx))
+            else:
+                label_widget.setVisible(False)
+                boton_widget.setVisible(False)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     modelo = ListaPeliculas('portadas/peliculas.json')
     vista = MainWindow()
-    controlador = _BuscadorPeliculas(modelo, vista)
+    controlador = BuscadorPeliculas(modelo, vista)
     vista.show()
     sys.exit(app.exec())
