@@ -59,10 +59,6 @@ class BuscadorPeliculas:
             label_widget.setVisible(True)
             boton_widget.setVisible(True)
             boton_widget.setText(pelicula['titulo'])
-            try:
-                boton_widget.clicked.disconnect()
-            except TypeError:
-                pass
             boton_widget.clicked.connect(lambda _, idx=i: self.__abrir_segunda_ventana(idx))
 
     def __buscar_por_titulo(self):
