@@ -1,14 +1,9 @@
 import os
-from PySide6.QtWidgets import QWidget, QDialog, QMessageBox, QCompleter
+from PySide6.QtWidgets import QWidget, QDialog, QMessageBox
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap
-from ventana_principal import Ui_ventana_principal
-from segunda_ventana import Ui_SegundaVentana
-
-import os
-from PySide6.QtWidgets import QDialog
-from PySide6.QtGui import QPixmap
-from segunda_ventana import Ui_SegundaVentana
+from ui.ventana_principal import Ui_ventana_principal
+from ui.segunda_ventana import Ui_SegundaVentana
 
 class SegundaVentana(QDialog):
     def __init__(self, pelicula, parent=None):
@@ -40,6 +35,11 @@ class SegundaVentana(QDialog):
         else:
             self.__ui.nombres_actores.setText("Actores no disponibles")
             self.__ui.nombres_actores.setWordWrap(True)
+
+        if 'Puntuacion' in pelicula:
+            self.__ui.puntuacion.setText(str(pelicula['Puntuacion']))
+        else:
+            self.__ui.puntuacion.setText("Puntuación no disponible")
 
 class MainWindow(QWidget):
     def __init__(self):

@@ -15,8 +15,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QSizePolicy,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
+    QSizePolicy, QVBoxLayout, QWidget)
 
 class Ui_SegundaVentana(object):
     def setupUi(self, SegundaVentana):
@@ -50,7 +50,7 @@ class Ui_SegundaVentana(object):
         self.imagen_descripcion.setSizePolicy(sizePolicy)
         self.descripcion_texto = QFrame(self.descripcion_imagen_texto)
         self.descripcion_texto.setObjectName(u"descripcion_texto")
-        self.descripcion_texto.setGeometry(QRect(220, 10, 360, 300))
+        self.descripcion_texto.setGeometry(QRect(220, 10, 361, 301))
         self.descripcion_texto.setFrameShape(QFrame.Shape.StyledPanel)
         self.descripcion_texto.setFrameShadow(QFrame.Shadow.Plain)
         self.verticalLayout_3 = QVBoxLayout(self.descripcion_texto)
@@ -80,6 +80,25 @@ class Ui_SegundaVentana(object):
 
         self.verticalLayout_3.addWidget(self.nombres_actores)
 
+        self.frame = QFrame(self.descripcion_texto)
+        self.frame.setObjectName(u"frame")
+        self.frame.setFrameShape(QFrame.Shape.Box)
+        self.frame.setFrameShadow(QFrame.Shadow.Plain)
+        self.horizontalLayout = QHBoxLayout(self.frame)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.encabezado_puntuacion = QLabel(self.frame)
+        self.encabezado_puntuacion.setObjectName(u"encabezado_puntuacion")
+
+        self.horizontalLayout.addWidget(self.encabezado_puntuacion)
+
+        self.puntuacion = QLabel(self.frame)
+        self.puntuacion.setObjectName(u"puntuacion")
+
+        self.horizontalLayout.addWidget(self.puntuacion)
+
+
+        self.verticalLayout_3.addWidget(self.frame)
+
 
         self.verticalLayout.addWidget(self.descripcion_imagen_texto)
 
@@ -96,5 +115,7 @@ class Ui_SegundaVentana(object):
         self.texto_sinopsis.setText("")
         self.encabezado_elenco.setText(QCoreApplication.translate("SegundaVentana", u"Elenco:", None))
         self.nombres_actores.setText("")
+        self.encabezado_puntuacion.setText(QCoreApplication.translate("SegundaVentana", u"Puntuacion : ", None))
+        self.puntuacion.setText("")
     # retranslateUi
 

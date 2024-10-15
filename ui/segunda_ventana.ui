@@ -86,8 +86,8 @@
        <rect>
         <x>220</x>
         <y>10</y>
-        <width>360</width>
-        <height>300</height>
+        <width>361</width>
+        <height>301</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -138,6 +138,32 @@
          <property name="text">
           <string/>
          </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame">
+         <property name="frameShape">
+          <enum>QFrame::Shape::Box</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Shadow::Plain</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="encabezado_puntuacion">
+            <property name="text">
+             <string>Puntuacion : </string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="puntuacion">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>

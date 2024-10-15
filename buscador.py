@@ -5,7 +5,7 @@ from PySide6.QtCore import Qt
 from listado_peliculas import ListaPeliculas
 from ventanas import MainWindow, SegundaVentana
 
-class BuscadorPeliculas:
+class _BuscadorPeliculas:
     def __init__(self, modelo, vista):
         self.__model = modelo
         self.__view = vista
@@ -21,18 +21,26 @@ class BuscadorPeliculas:
         self.__view._MainWindow__ui.texto_nombre_primer_actor.setCompleter(completer_actores)
         self.__view._MainWindow__ui.texto_nombre_segundo_actor.setCompleter(completer_actores)
 
-        self.__view._MainWindow__ui.boton_buscar_pelicula.clicked.connect(self.buscar_por_titulo)
-        self.__view._MainWindow__ui.boton_buscar_actores.clicked.connect(self.buscar_por_actores)
+        self.__view._MainWindow__ui.boton_buscar_pelicula.clicked.connect(self.__buscar_por_titulo)
+        self.__view._MainWindow__ui.boton_buscar_actores.clicked.connect(self.__buscar_por_actores)
 
-        botones = [
-            'boton_nombre_pelicula_uno', 'boton_nombre_pelicula_dos', 'boton_nombre_pelicula_tres',
-            'boton_nombre_pelicula_cuatro', 'boton_nombre_pelicula_cinco', 'boton_nombre_pelicula_seis',
-            'boton_nombre_pelicula_siete', 'boton_nombre_pelicula_ocho', 'boton_nombre_pelicula_nueve',
-            'boton_nombre_pelicula_diez'
+        frames = [
+            ('primer_pelicula_catalogo', 'boton_nombre_pelicula_uno'),
+            ('segunda_pelicula_catalogo', 'boton_nombre_pelicula_dos'),
+            ('tercer_pelicula_catalogo', 'boton_nombre_pelicula_tres'),
+            ('cuarta_pelicula_catalogo', 'boton_nombre_pelicula_cuatro'),
+            ('quinta_pelicula_catalogo', 'boton_nombre_pelicula_cinco'),
+            ('sexta_pelicula_catalogo', 'boton_nombre_pelicula_seis'),
+            ('septima_pelicula_catalogo', 'boton_nombre_pelicula_siete'),
+            ('octava_pelicula_catalogo', 'boton_nombre_pelicula_ocho'),
+            ('novena_pelicula_catalogo', 'boton_nombre_pelicula_nueve'),
+            ('decima_pelicula_catalogo', 'boton_nombre_pelicula_diez')
         ]
 
-        for i, boton in enumerate(botones):
-            getattr(self.__view._MainWindow__ui, boton).clicked.connect(lambda _, idx=i: self.abrir_segunda_ventana(idx))
+        for i, (frame, boton) in enumerate(frames):
+            frame_widget = getattr(self.__view._MainWindow__ui, frame)
+            boton_widget = getattr(self.__view._MainWindow__ui, boton)
+            boton_widget.clicked.connect(lambda _, idx=i: self.abrir_segunda_ventana(idx))
 
         self.mostrar_todas_peliculas()
 
@@ -63,7 +71,7 @@ class BuscadorPeliculas:
             label.setVisible(True)
             boton.setVisible(True)
 
-    def buscar_por_titulo(self):
+    def __buscar_por_titulo(self):
         nombre_buscado = self.__view._MainWindow__ui.texto_busqueda_pelicula.text().strip().lower()
 
         if not nombre_buscado:
@@ -78,7 +86,7 @@ class BuscadorPeliculas:
         else:
             self.__view.mostrar_alerta("Película no encontrada")
 
-    def buscar_por_actores(self):
+    def __buscar_por_actores(self):
         actor_uno_buscado = self.__view._MainWindow__ui.texto_nombre_primer_actor.text().strip().lower()
         actor_dos_buscado = self.__view._MainWindow__ui.texto_nombre_segundo_actor.text().strip().lower()
 
@@ -131,6 +139,6 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     modelo = ListaPeliculas('portadas/peliculas.json')
     vista = MainWindow()
-    controlador = BuscadorPeliculas(modelo, vista)
+    controlador = _BuscadorPeliculas(modelo, vista)
     vista.show()
     sys.exit(app.exec())
