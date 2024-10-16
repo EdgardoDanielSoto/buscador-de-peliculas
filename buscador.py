@@ -1,29 +1,30 @@
-import sys
 import random
-from PySide6.QtWidgets import QApplication, QCompleter
+
 from PySide6.QtCore import Qt
-from listado_peliculas import ListaPeliculas
-from ventanas import MainWindow, SegundaVentana
+from PySide6.QtWidgets import QCompleter
+
+from ventanas import SegundaVentana
+
 
 class BuscadorPeliculas:
     def __init__(self, modelo, vista):
-        self.__model = modelo
-        self.__view = vista
-        self.__peliculas = self.__model._ListaPeliculas__peliculas
+        self.__modelo = modelo
+        self.__vista = vista
+        self.__peliculas = self.__modelo._ListaPeliculas__peliculas
         self.__peliculas_mostradas = []
 
         titulos_peliculas = [p['titulo'] for p in self.__peliculas]
-        self.__view._MainWindow__ui.texto_busqueda_pelicula.setCompleter(QCompleter(titulos_peliculas, self.__view))
-        self.__view._MainWindow__ui.texto_busqueda_pelicula.completer().setCaseSensitivity(Qt.CaseInsensitive)
+        self.__vista._MainWindow__ui.texto_busqueda_pelicula.setCompleter(QCompleter(titulos_peliculas, self.__vista))
+        self.__vista._MainWindow__ui.texto_busqueda_pelicula.completer().setCaseSensitivity(Qt.CaseInsensitive)
 
         actores = set(actor for pelicula in self.__peliculas for actor in pelicula['actores'])
-        completer_actores = QCompleter(list(actores), self.__view)
+        completer_actores = QCompleter(list(actores), self.__vista)
         completer_actores.setCaseSensitivity(Qt.CaseInsensitive)
-        self.__view._MainWindow__ui.texto_nombre_primer_actor.setCompleter(completer_actores)
-        self.__view._MainWindow__ui.texto_nombre_segundo_actor.setCompleter(completer_actores)
+        self.__vista._MainWindow__ui.texto_nombre_primer_actor.setCompleter(completer_actores)
+        self.__vista._MainWindow__ui.texto_nombre_segundo_actor.setCompleter(completer_actores)
 
-        self.__view._MainWindow__ui.boton_buscar_pelicula.clicked.connect(self.__buscar_por_titulo)
-        self.__view._MainWindow__ui.boton_buscar_actores.clicked.connect(self.__buscar_por_actores)
+        self.__vista._MainWindow__ui.boton_buscar_pelicula.clicked.connect(self.__buscar_por_titulo)
+        self.__vista._MainWindow__ui.boton_buscar_actores.clicked.connect(self.__buscar_por_actores)
 
         self.__frames = [
             ('imagen_pelicula_uno', 'boton_nombre_pelicula_uno'),
@@ -43,7 +44,7 @@ class BuscadorPeliculas:
     def __abrir_segunda_ventana(self, index):
         if index < len(self.__peliculas_mostradas):
             pelicula = self.__peliculas_mostradas[index]
-            ventana_informacion = SegundaVentana(pelicula, self.__view)
+            ventana_informacion = SegundaVentana(pelicula, self.__vista)
             ventana_informacion.exec()
 
     def __mostrar_todas_peliculas(self):
@@ -51,11 +52,11 @@ class BuscadorPeliculas:
         self.__peliculas_mostradas = self.__peliculas[:10]
 
         for i, (label, boton) in enumerate(self.__frames):
-            label_widget = getattr(self.__view._MainWindow__ui, label)
-            boton_widget = getattr(self.__view._MainWindow__ui, boton)
+            label_widget = getattr(self.__vista._MainWindow__ui, label)
+            boton_widget = getattr(self.__vista._MainWindow__ui, boton)
             pelicula = self.__peliculas_mostradas[i]
 
-            self.__view.set_pelicula_info(label_widget, pelicula)
+            self.__vista.set_pelicula_info(label_widget, pelicula)
             label_widget.setVisible(True)
             boton_widget.setVisible(True)
             boton_widget.setText(pelicula['titulo'])
@@ -67,7 +68,7 @@ class BuscadorPeliculas:
             boton_widget.clicked.connect(lambda _, idx=i: self.__abrir_segunda_ventana(idx))
 
     def __buscar_por_titulo(self):
-        nombre_buscado = self.__view._MainWindow__ui.texto_busqueda_pelicula.text().strip().lower()
+        nombre_buscado = self.__vista._MainWindow__ui.texto_busqueda_pelicula.text().strip().lower()
 
         if not nombre_buscado:
             self.__mostrar_todas_peliculas()
@@ -79,14 +80,14 @@ class BuscadorPeliculas:
             resultados.sort(key=lambda pelicula: pelicula['titulo'])
             self.__mostrar_resultados(resultados)
         else:
-            self.__view.mostrar_alerta("Película no encontrada")
+            self.__vista.mostrar_alerta("Película no encontrada")
 
     def __buscar_por_actores(self):
-        actor_uno_buscado = self.__view._MainWindow__ui.texto_nombre_primer_actor.text().strip().lower()
-        actor_dos_buscado = self.__view._MainWindow__ui.texto_nombre_segundo_actor.text().strip().lower()
+        actor_uno_buscado = self.__vista._MainWindow__ui.texto_nombre_primer_actor.text().strip().lower()
+        actor_dos_buscado = self.__vista._MainWindow__ui.texto_nombre_segundo_actor.text().strip().lower()
 
         if not actor_uno_buscado or not actor_dos_buscado:
-            self.__view.mostrar_alerta("Debe ingresar los nombres de dos actores")
+            self.__vista.mostrar_alerta("Debe ingresar los nombres de dos actores")
             return
 
         resultados = []
@@ -101,18 +102,18 @@ class BuscadorPeliculas:
             resultados.sort(key=lambda pelicula: pelicula['titulo'])
             self.__mostrar_resultados(resultados)
         else:
-            self.__view.mostrar_alerta("Película no encontrada")
+            self.__vista.mostrar_alerta("Película no encontrada")
 
     def __mostrar_resultados(self, resultados):
         self.__peliculas_mostradas = resultados[:10]
 
         for i, (label, boton) in enumerate(self.__frames):
-            label_widget = getattr(self.__view._MainWindow__ui, label)
-            boton_widget = getattr(self.__view._MainWindow__ui, boton)
+            label_widget = getattr(self.__vista._MainWindow__ui, label)
+            boton_widget = getattr(self.__vista._MainWindow__ui, boton)
 
             if i < len(self.__peliculas_mostradas):
                 pelicula = self.__peliculas_mostradas[i]
-                self.__view.set_pelicula_info(label_widget, pelicula)
+                self.__vista.set_pelicula_info(label_widget, pelicula)
                 label_widget.setVisible(True)
                 boton_widget.setVisible(True)
                 boton_widget.setText(pelicula['titulo'])
