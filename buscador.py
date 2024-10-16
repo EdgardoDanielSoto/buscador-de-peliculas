@@ -125,10 +125,3 @@ class BuscadorPeliculas:
                 label_widget.setVisible(False)
                 boton_widget.setVisible(False)
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    modelo = ListaPeliculas('portadas/peliculas.json')
-    vista = MainWindow()
-    controlador = BuscadorPeliculas(modelo, vista)
-    vista.show()
-    sys.exit(app.exec())
