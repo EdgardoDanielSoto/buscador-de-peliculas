@@ -51,7 +51,7 @@
             <string notr="true">background-color: rgb(255, 255, 255);</string>
            </property>
            <property name="placeholderText">
-            <string>ingrese aquí nombre de pelicula</string>
+            <string>nombre de pelicula</string>
            </property>
           </widget>
          </item>
@@ -61,7 +61,7 @@
             <string notr="true">background-color: rgb(255, 255, 255);</string>
            </property>
            <property name="text">
-            <string>Buscar</string>
+            <string>Buscar - Recargar</string>
            </property>
           </widget>
          </item>
@@ -93,7 +93,7 @@
             <string notr="true">background-color: rgb(255, 255, 255);</string>
            </property>
            <property name="placeholderText">
-            <string>Ingrese nombre primer actor </string>
+            <string>nombre primer actor</string>
            </property>
           </widget>
          </item>
@@ -103,7 +103,7 @@
             <string notr="true">background-color: rgb(255, 255, 255);</string>
            </property>
            <property name="placeholderText">
-            <string>Ingrese nombre segundo actor</string>
+            <string>nombre segundo actor</string>
            </property>
           </widget>
          </item>
