@@ -9,7 +9,7 @@ class BuscadorPeliculas:
     def __init__(self, modelo, vista):
         self.__model = modelo
         self.__view = vista
-        self.__peliculas = self.__model.get_peliculas()
+        self.__peliculas = self.__model._ListaPeliculas__peliculas
         self.__peliculas_mostradas = []
 
         titulos_peliculas = [p['titulo'] for p in self.__peliculas]

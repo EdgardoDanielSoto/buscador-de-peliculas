@@ -23,7 +23,7 @@ class Ui_ventana_principal(object):
     def setupUi(self, ventana_principal):
         if not ventana_principal.objectName():
             ventana_principal.setObjectName(u"ventana_principal")
-        ventana_principal.resize(821, 852)
+        ventana_principal.resize(512, 648)
         ventana_principal.setStyleSheet(u"background-color: rgb(236, 224, 208);")
         self.verticalLayout_3 = QVBoxLayout(ventana_principal)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
