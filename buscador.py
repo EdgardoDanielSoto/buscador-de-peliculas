@@ -10,14 +10,14 @@ class BuscadorPeliculas:
     def __init__(self, modelo, vista):
         self.modelo = modelo
         self.__vista = vista
-        self.peliculas = self.modelo.peliculas
+        self.pelicula = self.modelo.pelicula
         self.__peliculas_mostradas = []
 
-        titulos_peliculas = [p['titulo'] for p in self.peliculas]
+        titulos_peliculas = [p['titulo'] for p in self.pelicula]
         self.__vista._MainWindow__ui.texto_busqueda_pelicula.setCompleter(QCompleter(titulos_peliculas, self.__vista))
         self.__vista._MainWindow__ui.texto_busqueda_pelicula.completer().setCaseSensitivity(Qt.CaseInsensitive)
 
-        actores = set(actor for pelicula in self.peliculas for actor in pelicula['actores'])
+        actores = set(actor for pelicula in self.pelicula for actor in pelicula['actores'])
         completer_actores = QCompleter(list(actores), self.__vista)
         completer_actores.setCaseSensitivity(Qt.CaseInsensitive)
         self.__vista._MainWindow__ui.texto_nombre_primer_actor.setCompleter(completer_actores)
@@ -48,8 +48,8 @@ class BuscadorPeliculas:
             ventana_informacion.exec()
 
     def mostrar_todas_peliculas(self):
-        random.shuffle(self.peliculas)
-        self.__peliculas_mostradas = self.peliculas[:10]
+        random.shuffle(self.pelicula)
+        self.__peliculas_mostradas = self.pelicula[:10]
 
         for i, (label, boton) in enumerate(self.__frames):
             label_widget = getattr(self.__vista._MainWindow__ui, label)
@@ -74,7 +74,7 @@ class BuscadorPeliculas:
             self.mostrar_todas_peliculas()
             return
 
-        resultados = [pelicula for pelicula in self.peliculas if nombre_buscado in pelicula['titulo'].strip().lower()]
+        resultados = [pelicula for pelicula in self.pelicula if nombre_buscado in pelicula['titulo'].strip().lower()]
 
         if resultados:
             resultados.sort(key=lambda pelicula: pelicula['titulo'])
@@ -91,7 +91,7 @@ class BuscadorPeliculas:
             return
 
         resultados = []
-        for pelicula in self.peliculas:
+        for pelicula in self.pelicula:
             actor_uno_coincide = any(actor_uno_buscado in actor.strip().lower() for actor in pelicula['actores'])
             actor_dos_coincide = any(actor_dos_buscado in actor.strip().lower() for actor in pelicula['actores'])
 
