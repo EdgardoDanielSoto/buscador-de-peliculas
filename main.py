@@ -1,13 +1,17 @@
-import sys
-from PySide6.QtWidgets import QApplication
-from peliculas import Pelicula
-from ventanas import MainWindow
-from buscador import BuscadorPeliculas
+# main.py
+
+from PySide6.QtWidgets import QApplication, QWidget
+from ui.ventana_principal import Ui_ventana_principal
+
+class MainWindow(QWidget):
+    def __init__(self):
+        super(MainWindow, self).__init__()
+        self.ui = Ui_ventana_principal()
+        self.ui.setupUi(self)
 
 if __name__ == "__main__":
+    import sys
     app = QApplication(sys.argv)
-    modelo = Pelicula('portadas/peliculas.json')
-    vista = MainWindow()
-    controlador = BuscadorPeliculas(modelo, vista)
-    vista.show()
+    main_window = MainWindow()
+    main_window.show()
     sys.exit(app.exec())

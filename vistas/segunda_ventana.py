@@ -1,10 +1,3 @@
-import os
-from PySide6.QtWidgets import QWidget, QDialog, QMessageBox
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QPixmap
-from ui.ventana_principal import Ui_ventana_principal
-from ui.segunda_ventana import Ui_SegundaVentana
-
 class SegundaVentana(QDialog):
     def __init__(self, pelicula, parent=None):
         super(SegundaVentana, self).__init__(parent)
@@ -41,31 +34,3 @@ class SegundaVentana(QDialog):
         else:
             self.__ui.puntuacion.setText("Puntuación no disponible")
 
-class MainWindow(QWidget):
-    def __init__(self):
-        super(MainWindow, self).__init__()
-        self.__ui = Ui_ventana_principal()
-        self.__ui.setupUi(self)
-
-    def set_pelicula_info(self, label, pelicula):
-        if 'imagen' in pelicula:
-            imagen_path = os.path.join(os.path.dirname(__file__), pelicula['imagen'])
-            if os.path.exists(imagen_path):
-                pixmap = QPixmap(imagen_path)
-                if not pixmap.isNull():
-                    pixmap = pixmap.scaled(label.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
-                    label.setPixmap(pixmap)
-                else:
-                    print(f"Error: No se pudo cargar la imagen desde {imagen_path}")
-            else:
-                print(f"Error: La ruta de la imagen {imagen_path} no existe")
-        else:
-            print("Error: La película no tiene una clave 'imagen'")
-
-    def mostrar_alerta(self, mensaje):
-        msg_box = QMessageBox()
-        msg_box.setIcon(QMessageBox.Warning)
-        msg_box.setWindowTitle("Alerta")
-        msg_box.setText(mensaje)
-        msg_box.setStandardButtons(QMessageBox.Ok)
-        msg_box.exec()
