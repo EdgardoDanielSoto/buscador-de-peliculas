@@ -1,21 +1,38 @@
-import json
-import os
+from modelo.actor import Actor
 
+class Pelicula:
+    def __init__(self, titulo, actores, sinopsis, puntuacion, imagen):
+        self.__titulo = titulo
+        self.__actores = [Actor(actor) for actor in actores]
+        self.__sinopsis = sinopsis
+        self.__puntuacion = puntuacion
+        self.__imagen = imagen
 
-file_path = os.path.join('portadas', 'peliculas.json')
+    @classmethod
+    def cargar_pelicula_desde_json(cls, archivo_json):
+        return cls(
+            titulo=archivo_json['titulo'],
+            actores=archivo_json['actores'],
+            sinopsis=archivo_json['sinopsis'],
+            puntuacion=archivo_json['puntuacion'],
+            imagen=archivo_json['imagen']
+        )
 
-with open(file_path, 'r') as file:
-    peliculas = json.load(file)
+    def __str__(self):
+        return (f"Título: {self.__titulo}\n"
 
+                f"Actores: {', '.join(str(actor) for actor in self.__actores)}\n"
+                f"Sinopsis: {self.__sinopsis}\n"
+                f"Puntuación: {self.__puntuacion}")
 
-for pelicula in peliculas:
-    if pelicula['titulo'] == "La historia oficial":
-        print("Datos de la película:")
-        print(f"Título: {pelicula['titulo']}")
-        print(f"Actores: {', '.join(pelicula['actores'])}")
-        print(f"Sinopsis: {pelicula['sinopsis']}")
-        print(f"País: {pelicula['pais']}")
-        print(f"Imagen: {pelicula['imagen']}")
-        print(f"Puntuación: {pelicula['Puntuacion']}")
-        print(f"Género: {pelicula['Genero']}")
-        break
+    def obtener_atributos(self):
+        return {
+            "titulo": self.__titulo,
+            "actores": [actor.obtener_nombre() for actor in self.__actores],
+            "sinopsis": self.__sinopsis,
+            "puntuacion": self.__puntuacion,
+            "poster": self.__imagen,
+        }
+
+    def buscar_actor(self, actor_nombre):
+        return any(actor_nombre.lower() in actor.obtener_nombre().lower() for actor in self.__actores)

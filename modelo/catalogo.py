@@ -1,20 +1,42 @@
 import json
+from modelo.pelicula import Pelicula
 
 class Catalogo:
-    def __init__(self, file_path):
-        self.__catalogo = []
-        self.__cargar_peliculas(file_path)
+    def __init__(self):
+        self.__catalogo = self.cargar_catalogo()
 
-    def __cargar_peliculas(self, file_path):
+    def cargar_catalogo(self):
+        try:
+            with open('peliculas/catalogo.json', 'r') as file:
+                archivo = json.load(file)
+                return [Pelicula.cargar_pelicula_desde_json(pelis) for pelis in archivo]
+        except FileNotFoundError:
+            print("Error: El archivo catalogo.json no se encontró.")
+            return []
+        except json.JSONDecodeError:
+            print("Error: El archivo catalogo.json no es un JSON válido.")
+            return []
 
-        with open(file_path, 'r') as file:
-            self.__catalogo = json.load(file)
-
-    def __obtener_peliculas(self):
+    def gestionar_catalogo(self):
         return self.__catalogo
 
-    def __buscar_por_titulo(self, titulo):
-        return [pelicula for pelicula in self.__catalogo if titulo.lower() in pelicula['titulo'].lower()]
+    def buscar_pelicula(self, nombre):
+        return [
+            pelicula for pelicula in self.__catalogo
+            if nombre.lower() in pelicula.obtener_atributos()["titulo"].lower()]
 
-    def __buscar_por_actor(self, actor):
-        return [pelicula for pelicula in self.__catalogo if any(actor.lower() in a.lower() for a in pelicula['actores'])]
+    def buscar_actor(self, actores_input):
+        actores = [actor.strip().lower() for actor in actores_input.split(',')]
+        peliculas_encontradas = []
+        for actor_nombre in actores:
+            for pelicula in self.__catalogo:
+                if pelicula.buscar_actor(actor_nombre):
+                    peliculas_encontradas.append(pelicula)
+        return list(set(peliculas_encontradas))
+
+    def obtener_info_pelicula(self, titulo):
+        for pelicula in self.__catalogo:
+            if pelicula.obtener_atributos()["titulo"].strip().lower() == titulo.strip().lower():
+                return pelicula
+        return None
+

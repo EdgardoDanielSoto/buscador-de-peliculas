@@ -19,15 +19,15 @@ from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QHeaderView,
     QLabel, QLineEdit, QPushButton, QSizePolicy,
     QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
 
-class Ui_ventana_principal(object):
-    def setupUi(self, ventana_principal):
-        if not ventana_principal.objectName():
-            ventana_principal.setObjectName(u"ventana_principal")
-        ventana_principal.resize(592, 669)
-        ventana_principal.setStyleSheet(u"background-color: rgb(246, 245, 244);")
-        self.verticalLayout_3 = QVBoxLayout(ventana_principal)
+class Ui_Ventana_Principal(object):
+    def setupUi(self, Ventana_Principal):
+        if not Ventana_Principal.objectName():
+            Ventana_Principal.setObjectName(u"Ventana_Principal")
+        Ventana_Principal.resize(592, 669)
+        Ventana_Principal.setStyleSheet(u"background-color: rgb(246, 245, 244);")
+        self.verticalLayout_3 = QVBoxLayout(Ventana_Principal)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.busquedas = QFrame(ventana_principal)
+        self.busquedas = QFrame(Ventana_Principal)
         self.busquedas.setObjectName(u"busquedas")
         self.busquedas.setFrameShape(QFrame.Shape.StyledPanel)
         self.busquedas.setFrameShadow(QFrame.Shadow.Raised)
@@ -103,19 +103,19 @@ class Ui_ventana_principal(object):
         self.verticalLayout_3.addWidget(self.busquedas)
 
 
-        self.retranslateUi(ventana_principal)
+        self.retranslateUi(Ventana_Principal)
 
-        QMetaObject.connectSlotsByName(ventana_principal)
+        QMetaObject.connectSlotsByName(Ventana_Principal)
     # setupUi
 
-    def retranslateUi(self, ventana_principal):
-        ventana_principal.setWindowTitle(QCoreApplication.translate("ventana_principal", u"Peliculas argentinas", None))
-        self.titulo_busqueda_pelicula.setText(QCoreApplication.translate("ventana_principal", u"Buscar pelicula", None))
-        self.texto_busqueda_pelicula.setPlaceholderText(QCoreApplication.translate("ventana_principal", u"nombre de pelicula", None))
-        self.boton_buscar_pelicula.setText(QCoreApplication.translate("ventana_principal", u"Buscar - Recargar", None))
-        self.titulo_busqueda_actores.setText(QCoreApplication.translate("ventana_principal", u"Buscar por actores", None))
-        self.texto_nombre_primer_actor.setPlaceholderText(QCoreApplication.translate("ventana_principal", u"nombre primer actor", None))
-        self.texto_nombre_segundo_actor.setPlaceholderText(QCoreApplication.translate("ventana_principal", u"nombre segundo actor", None))
-        self.boton_buscar_actores.setText(QCoreApplication.translate("ventana_principal", u"Buscar", None))
+    def retranslateUi(self, Ventana_Principal):
+        Ventana_Principal.setWindowTitle(QCoreApplication.translate("Ventana_Principal", u"Peliculas argentinas", None))
+        self.titulo_busqueda_pelicula.setText(QCoreApplication.translate("Ventana_Principal", u"Buscar pelicula", None))
+        self.texto_busqueda_pelicula.setPlaceholderText(QCoreApplication.translate("Ventana_Principal", u"nombre de pelicula", None))
+        self.boton_buscar_pelicula.setText(QCoreApplication.translate("Ventana_Principal", u"Buscar ", None))
+        self.titulo_busqueda_actores.setText(QCoreApplication.translate("Ventana_Principal", u"Buscar por actores", None))
+        self.texto_nombre_primer_actor.setPlaceholderText(QCoreApplication.translate("Ventana_Principal", u"nombre primer actor", None))
+        self.texto_nombre_segundo_actor.setPlaceholderText(QCoreApplication.translate("Ventana_Principal", u"nombre segundo actor", None))
+        self.boton_buscar_actores.setText(QCoreApplication.translate("Ventana_Principal", u"Buscar", None))
     # retranslateUi
 
