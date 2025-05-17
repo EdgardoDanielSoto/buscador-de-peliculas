@@ -104,6 +104,8 @@ class Ui_Ventana_Principal(object):
 
 
         self.retranslateUi(Ventana_Principal)
+        self.boton_buscar_pelicula.clicked.connect(Ventana_Principal.pelicula_por_titulo)
+        #self.boton_buscar_actores.clicked.connect(Ventana_Principal.pelicula_por_actores)
 
         QMetaObject.connectSlotsByName(Ventana_Principal)
     # setupUi

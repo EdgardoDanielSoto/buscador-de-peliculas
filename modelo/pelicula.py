@@ -1,38 +1,26 @@
-from modelo.actor import Actor
+import os
 
 class Pelicula:
-    def __init__(self, titulo, actores, sinopsis, puntuacion, imagen):
+    def __init__(self, titulo, sinopsis, puntuacion, actores, poster):
         self.__titulo = titulo
-        self.__actores = [Actor(actor) for actor in actores]
         self.__sinopsis = sinopsis
         self.__puntuacion = puntuacion
-        self.__imagen = imagen
-
-    @classmethod
-    def cargar_pelicula_desde_json(cls, archivo_json):
-        return cls(
-            titulo=archivo_json['titulo'],
-            actores=archivo_json['actores'],
-            sinopsis=archivo_json['sinopsis'],
-            puntuacion=archivo_json['puntuacion'],
-            imagen=archivo_json['imagen']
-        )
-
-    def __str__(self):
-        return (f"Título: {self.__titulo}\n"
-
-                f"Actores: {', '.join(str(actor) for actor in self.__actores)}\n"
-                f"Sinopsis: {self.__sinopsis}\n"
-                f"Puntuación: {self.__puntuacion}")
+        self.__poster = poster
+        self.__actores = actores
 
     def obtener_atributos(self):
+        actores_nombres = []
+
+        for actor in self.__actores:
+            actores_nombres.append(actor.nombre)
+
         return {
-            "titulo": self.__titulo,
-            "actores": [actor.obtener_nombre() for actor in self.__actores],
-            "sinopsis": self.__sinopsis,
-            "puntuacion": self.__puntuacion,
-            "poster": self.__imagen,
+            'Titulo': self.__titulo,
+            'Sinopsis': self.__sinopsis,
+            'Puntuacion': self.__puntuacion,
+            'Actores': actores_nombres,
+            'Poster': self.__poster
         }
 
-    def buscar_actor(self, actor_nombre):
-        return any(actor_nombre.lower() in actor.obtener_nombre().lower() for actor in self.__actores)
+    def cargar_ruta(self):
+        return os.path.join("recursos", "imagen", self.__poster)
