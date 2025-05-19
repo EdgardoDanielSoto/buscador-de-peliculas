@@ -11,10 +11,10 @@ class VentanaPelicula(QDialog):
         self.setWindowTitle("Detalles de la Película")
 
     def mostrar_datos(self, pelicula):
-        self.__ui.label_titulo_ingresado.setText(pelicula.obtener_atributos()["Titulo"])
-        self.__ui.label_sinopsis.setText(pelicula.obtener_atributos()["Sinopsis"])
-        self.__ui.label_puntuacion.setText(str(pelicula.obtener_atributos()["Puntuacion"]))
-        self.__ui.label_actores.setText(", ".join(pelicula.obtener_atributos()['Actores']))
+        #self.__ui.label_titulo_ingresado.setText(pelicula.obtener_atributos()["Titulo"])
+        self.__ui.texto_sinopsis.setText(pelicula.obtener_atributos()["Sinopsis"])
+        self.__ui.puntuacion.setText(str(pelicula.obtener_atributos()["Puntuacion"]))
+        self.__ui.nombres_actores.setText(", ".join(pelicula.obtener_atributos()['Actores']))
 
         ruta = pelicula.cargar_ruta()
         self.__cargar_poster(ruta)
@@ -22,6 +22,6 @@ class VentanaPelicula(QDialog):
     def __cargar_poster(self, ruta):
         pixmap = QPixmap(ruta)
         if pixmap:
-            self.__ui.label_poster.setPixmap(pixmap.scaled(300, 450))
+            self.__ui.imagen_descripcion.setPixmap(pixmap.scaled(300, 450))
         else:
             print("Error al cargar la imagen: poster no encontrado.")
