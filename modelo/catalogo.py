@@ -29,6 +29,7 @@ class Catalogo:
                 actores.append(actor)
         return sorted(set(actores))
 
+
     def buscar_actor_por_nombre(self, nombre_actor):
         actores_encontrados = []
         for pelicula in self.__peliculas:
@@ -36,6 +37,7 @@ class Catalogo:
                 if nombre_actor.lower() in actor.lower():
                     actores_encontrados.append(actor)
         return actores_encontrados
+
 
     def buscar_peliculas_por_titulo(self, titulo):
         peliculas_encontradas = []
@@ -51,4 +53,6 @@ class Catalogo:
             if actor_n1.lower() in actores_minuscula and actor_n2.lower() in actores_minuscula:
                 peliculas_encontradas.append(pelicula)
         return peliculas_encontradas
+
+
 

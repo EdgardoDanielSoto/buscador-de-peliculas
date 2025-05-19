@@ -15,10 +15,11 @@ class Controlador:
         self.__peliculas = self.__catalogo.obtener_peliculas()
 
 
-        self.__ventana_principal = VentanaPrincipal()
+        self.__ventana_principal = VentanaPrincipal(self.__catalogo)
         self.__ventana_principal.cargar_peliculas(self.__peliculas)
         self.__ventana_principal.buscar.connect(self.__buscar_peliculas)
         self.__ventana_principal.abrir_pelicula.connect(self.__mostrar_pelicula)
+        self.__ventana_principal.buscar_pelicula_actores.connect(self.__buscar_por_actores)
         #self.__ventana_principal.abrir_ventana_busqueda_actores.connect(self.__abrir_ventana_busqueda_actores)
 
         # Instancia Ventana Película
@@ -77,19 +78,21 @@ class Controlador:
     #     else:
     #         self.__ventana_actores.cargar_actores(actores)
 
-    # def __buscar_por_actores(self, actor_n1, actor_n2):
-    #     if actor_n1 and actor_n2:
-    #         if actor_n1 != actor_n2:
-    #             peliculas_encontradas = self.__catalogo.buscar_peliculas_por_actores(actor_n1, actor_n2)
-    #
-    #             if len(peliculas_encontradas) == 0:
-    #                 self.__ventana_actores.mostrar_error("No se encontraron películas con esos actores.")
-    #             else:
-    #                 self.__ventana_actores.cargar_peliculas(peliculas_encontradas)
-    #         else:
-    #             self.__ventana_actores.mostrar_error("Los actores no pueden ser los mismos.")
-    #     else:
-    #         self.__ventana_actores.mostrar_error("Ingrese ambos nombres de actores.")
+
+
+    def __buscar_por_actores(self, actor_n1, actor_n2):
+        if actor_n1 and actor_n2:
+            if actor_n1 != actor_n2:
+                peliculas_encontradas = self.__catalogo.buscar_peliculas_por_actores(actor_n1, actor_n2)
+
+                if len(peliculas_encontradas) == 0:
+                    self.__ventana_principal.mostrar_error("No se encontraron películas con esos actores.")
+                else:
+                    self.__ventana_principal.cargar_peliculas(peliculas_encontradas)
+            else:
+                self.__ventana_principal.mostrar_error("Los actores no pueden ser los mismos.")
+        else:
+            self.__ventana_principal.mostrar_error("Ingrese ambos nombres de actores.")
 
     def ejecutar(self):
         self.__ventana_principal.show()
