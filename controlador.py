@@ -1,7 +1,6 @@
 from modelo.catalogo import Catalogo
 from vista.ventana_de_busqueda import VentanaPrincipal
 from vista.descripcion_pelicula import VentanaPelicula
-#from vista.ventana_actores import VentanaActor
 from modelo.actor import Actor
 from modelo.pelicula import Pelicula
 
@@ -20,16 +19,9 @@ class Controlador:
         self.__ventana_principal.buscar.connect(self.__buscar_peliculas)
         self.__ventana_principal.abrir_pelicula.connect(self.__mostrar_pelicula)
         self.__ventana_principal.buscar_pelicula_actores.connect(self.__buscar_por_actores)
-        #self.__ventana_principal.abrir_ventana_busqueda_actores.connect(self.__abrir_ventana_busqueda_actores)
 
         # Instancia Ventana Película
         self.__ventana_pelicula = VentanaPelicula()
-
-        # Instancia Ventana Actores
-        #self.__ventana_actores = VentanaActor()
-        #self.__ventana_actores.buscar_actor.connect(self.__buscar_actor)
-        #self.__ventana_actores.busqueda_por_actores.connect(self.__buscar_por_actores)
-        #self.__ventana_actores.abrir_pelicula.connect(self.__mostrar_pelicula)
 
     def __cargar_datos(self):
         contenido = self.__catalogo.obtener_contenido_del_archivo()
@@ -65,19 +57,6 @@ class Controlador:
             self.__ventana_pelicula.exec()
         else:
             self.__ventana_principal.mostrar_error("No se encontró la película.")
-
-    # def __abrir_ventana_busqueda_actores(self):
-    #     actores = self.__catalogo.obtener_actores_unicos()
-    #     self.__ventana_actores.cargar_actores(actores)
-    #     self.__ventana_actores.exec()
-
-    # def __buscar_actor(self, nombre):
-    #     actores = self.__catalogo.buscar_actor_por_nombre(nombre)
-    #     if len(actores) == 0:
-    #         self.__ventana_actores.mostrar_error("No se encontró el actor")
-    #     else:
-    #         self.__ventana_actores.cargar_actores(actores)
-
 
 
     def __buscar_por_actores(self, actor_n1, actor_n2):

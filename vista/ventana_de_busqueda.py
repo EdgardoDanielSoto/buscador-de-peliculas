@@ -36,7 +36,6 @@ class VentanaPrincipal(QWidget):
         self.__ui.table_peliculas.horizontalHeader().setStretchLastSection(True)
         self.__ui.table_peliculas.itemDoubleClicked.connect(self.emitir_abrir_pelicula)
         self.__ui.boton_buscar_pelicula.setCheckable(True)
-        #self.__ui.boton_abrir_ventana_actores.setCheckable(True)
 
     def pelicula_por_titulo(self):
         titulo = self.__ui.texto_busqueda_pelicula.text().lower()
@@ -44,10 +43,6 @@ class VentanaPrincipal(QWidget):
 
     def emitir_abrir_pelicula(self, item):
         self.abrir_pelicula.emit(item.text())
-
-    # def emitir_abrir_ventana_busqueda_actores(self):
-    #     self.abrir_ventana_busqueda_actores.emit()
-    # def buscar_actor(self):
 
     def __obtener_nombres_actores(self):
         actor_1 = self.__ui.texto_nombre_primer_actor.text().strip().lower()

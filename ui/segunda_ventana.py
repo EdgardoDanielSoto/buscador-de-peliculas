@@ -15,20 +15,20 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QSizePolicy, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QSizePolicy,
+    QVBoxLayout, QWidget)
 
 class Ui_SegundaVentana(object):
     def setupUi(self, SegundaVentana):
         if not SegundaVentana.objectName():
             SegundaVentana.setObjectName(u"SegundaVentana")
+        SegundaVentana.setEnabled(True)
         SegundaVentana.resize(608, 335)
         SegundaVentana.setMinimumSize(QSize(608, 335))
         SegundaVentana.setMaximumSize(QSize(608, 335))
-        self.verticalLayout = QVBoxLayout(SegundaVentana)
-        self.verticalLayout.setObjectName(u"verticalLayout")
         self.descripcion_imagen_texto = QFrame(SegundaVentana)
         self.descripcion_imagen_texto.setObjectName(u"descripcion_imagen_texto")
+        self.descripcion_imagen_texto.setGeometry(QRect(9, 9, 590, 317))
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -50,7 +50,7 @@ class Ui_SegundaVentana(object):
         self.imagen_descripcion.setSizePolicy(sizePolicy)
         self.descripcion_texto = QFrame(self.descripcion_imagen_texto)
         self.descripcion_texto.setObjectName(u"descripcion_texto")
-        self.descripcion_texto.setGeometry(QRect(220, 10, 361, 301))
+        self.descripcion_texto.setGeometry(QRect(220, 10, 361, 291))
         self.descripcion_texto.setFrameShape(QFrame.Shape.StyledPanel)
         self.descripcion_texto.setFrameShadow(QFrame.Shadow.Plain)
         self.verticalLayout_3 = QVBoxLayout(self.descripcion_texto)
@@ -62,10 +62,6 @@ class Ui_SegundaVentana(object):
 
         self.texto_sinopsis = QLabel(self.descripcion_texto)
         self.texto_sinopsis.setObjectName(u"texto_sinopsis")
-        sizePolicy.setHeightForWidth(self.texto_sinopsis.sizePolicy().hasHeightForWidth())
-        self.texto_sinopsis.setSizePolicy(sizePolicy)
-        self.texto_sinopsis.setStyleSheet(u"")
-        self.texto_sinopsis.setFrameShape(QFrame.Shape.Box)
 
         self.verticalLayout_3.addWidget(self.texto_sinopsis)
 
@@ -76,31 +72,32 @@ class Ui_SegundaVentana(object):
 
         self.nombres_actores = QLabel(self.descripcion_texto)
         self.nombres_actores.setObjectName(u"nombres_actores")
-        self.nombres_actores.setFrameShape(QFrame.Shape.Box)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Ignored)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.nombres_actores.sizePolicy().hasHeightForWidth())
+        self.nombres_actores.setSizePolicy(sizePolicy1)
+        self.nombres_actores.setFrameShape(QFrame.Shape.NoFrame)
 
         self.verticalLayout_3.addWidget(self.nombres_actores)
 
         self.frame = QFrame(self.descripcion_texto)
         self.frame.setObjectName(u"frame")
-        self.frame.setFrameShape(QFrame.Shape.Box)
+        self.frame.setFrameShape(QFrame.Shape.NoFrame)
         self.frame.setFrameShadow(QFrame.Shadow.Plain)
-        self.horizontalLayout = QHBoxLayout(self.frame)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.frame.setLineWidth(1)
         self.encabezado_puntuacion = QLabel(self.frame)
         self.encabezado_puntuacion.setObjectName(u"encabezado_puntuacion")
-
-        self.horizontalLayout.addWidget(self.encabezado_puntuacion)
-
+        self.encabezado_puntuacion.setGeometry(QRect(9, 9, 100, 20))
+        self.encabezado_puntuacion.setFrameShape(QFrame.Shape.NoFrame)
+        self.encabezado_puntuacion.setFrameShadow(QFrame.Shadow.Plain)
         self.puntuacion = QLabel(self.frame)
         self.puntuacion.setObjectName(u"puntuacion")
-
-        self.horizontalLayout.addWidget(self.puntuacion)
-
+        self.puntuacion.setGeometry(QRect(174, 9, 81, 19))
+        sizePolicy1.setHeightForWidth(self.puntuacion.sizePolicy().hasHeightForWidth())
+        self.puntuacion.setSizePolicy(sizePolicy1)
 
         self.verticalLayout_3.addWidget(self.frame)
-
-
-        self.verticalLayout.addWidget(self.descripcion_imagen_texto)
 
 
         self.retranslateUi(SegundaVentana)

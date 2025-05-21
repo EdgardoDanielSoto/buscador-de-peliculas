@@ -22,5 +22,5 @@ class Pelicula:
             'Poster': self.__poster
         }
 
-    def cargar_ruta(self):
-        return os.path.join("recursos", "imagen", self.__poster)
+    def cargar_imagen(self):
+        return os.path.join("portadas", "imagen", self.__poster)
