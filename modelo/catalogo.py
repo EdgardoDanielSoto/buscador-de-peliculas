@@ -15,7 +15,7 @@ class Catalogo:
 
     @staticmethod
     def obtener_contenido_del_archivo():
-        ruta_archivo = os.path.join("portadas", "peliculas.json")
+        ruta_archivo = os.path.join("recursos", "peliculas.json")
         try:
             with open(ruta_archivo, 'r', encoding='utf-8') as archivo:
                 return json.load(archivo)

@@ -7,10 +7,8 @@ from modelo.pelicula import Pelicula
 
 class Controlador:
     def __init__(self):
-        # Instancia de catálogo
         self.__catalogo = Catalogo()
         self.__cargar_datos()
-        # Instancia Ventana Principal
         self.__peliculas = self.__catalogo.obtener_peliculas()
 
 
@@ -20,7 +18,6 @@ class Controlador:
         self.__ventana_principal.abrir_pelicula.connect(self.__mostrar_pelicula)
         self.__ventana_principal.buscar_pelicula_actores.connect(self.__buscar_por_actores)
 
-        # Instancia Ventana Película
         self.__ventana_pelicula = VentanaPelicula()
 
     def __cargar_datos(self):

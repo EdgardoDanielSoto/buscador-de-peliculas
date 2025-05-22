@@ -23,4 +23,4 @@ class Pelicula:
         }
 
     def cargar_imagen(self):
-        return os.path.join("portadas", "imagen", self.__poster)
+        return os.path.join("recursos", "imagen", self.__poster)
