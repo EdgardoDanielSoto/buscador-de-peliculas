@@ -4,10 +4,12 @@ from ui.ventana_principal import Ui_Ventana_Principal
 from PySide6.QtWidgets import QCompleter
 
 
+
 class VentanaPrincipal(QWidget):
     buscar = Signal(str)
     abrir_pelicula = Signal(str)
     buscar_pelicula_actores = Signal(str, str)
+
 
     def __init__(self, catalogo):
         super(VentanaPrincipal,self).__init__()
