@@ -1,8 +1,8 @@
-from modelo.catalogo import Catalogo
 from vista.ventana_de_busqueda import VentanaPrincipal
 from vista.descripcion_pelicula import VentanaPelicula
-from modelo.actor import Actor
-from modelo.pelicula import Pelicula
+from modelos.actor import Actor
+from modelos.pelicula import Pelicula
+from modelos.catalogo import Catalogo
 
 
 class Controlador:
