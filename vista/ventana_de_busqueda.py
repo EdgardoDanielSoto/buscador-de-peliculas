@@ -19,11 +19,11 @@ class VentanaPrincipal(QWidget):
         self.__ui.setupUi(self)
         self.setWindowTitle("Ventana principal")
 
-        self.__actores_unicos = self.__catalogo.obtener_actores_unicos()
+        self.__actores_unicos = [actor.lower() for actor in self.__catalogo.obtener_actores_unicos()]
         self.__ui.texto_nombre_primer_actor.setCompleter(QCompleter(self.__actores_unicos, self))
         self.__ui.texto_nombre_segundo_actor.setCompleter(QCompleter(self.__actores_unicos, self))
 
-        self.__titulos_peliculas = [pelicula.obtener_atributos()['Titulo'] for pelicula in self.__catalogo.obtener_peliculas()]
+        self.__titulos_peliculas = [pelicula.obtener_atributos()['Titulo'].lower() for pelicula in self.__catalogo.obtener_peliculas()]
         self.__ui.texto_busqueda_pelicula.setCompleter(QCompleter(self.__titulos_peliculas, self))
 
         self.__ui.table_peliculas.setRowCount(0)

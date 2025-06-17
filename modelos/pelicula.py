@@ -12,7 +12,7 @@ class Pelicula:
         actores_nombres = []
 
         for actor in self.__actores:
-            actores_nombres.append(actor.nombre)
+            actores_nombres.append(actor.obtener_nombre())
 
         return {
             'Titulo': self.__titulo,

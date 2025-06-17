@@ -14,7 +14,8 @@
    <string>Peliculas argentinas</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);</string>
+   <string notr="true">background-color: rgb(61, 56, 70);
+color: rgb(255, 255, 255);</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
@@ -29,7 +30,7 @@
       <item>
        <widget class="QLabel" name="titulo_busqueda_pelicula">
         <property name="styleSheet">
-         <string notr="true">color: rgb(0, 0, 0);</string>
+         <string notr="true">color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
          <string>Buscar pelicula</string>
@@ -39,7 +40,7 @@
       <item>
        <widget class="QFrame" name="busqueda_pelicula">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 191, 188);</string>
+         <string notr="true">background-color: rgb(61, 56, 70);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Shape::Box</enum>
@@ -78,7 +79,7 @@ background-color: rgb(61, 56, 70);</string>
       <item>
        <widget class="QLabel" name="titulo_busqueda_actores">
         <property name="styleSheet">
-         <string notr="true">color: rgb(0, 0, 0);</string>
+         <string notr="true">color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
          <string>Buscar por actores</string>
@@ -88,8 +89,7 @@ background-color: rgb(61, 56, 70);</string>
       <item>
        <widget class="QFrame" name="busqueda_actores">
         <property name="styleSheet">
-         <string notr="true">
-background-color: rgb(192, 191, 188);</string>
+         <string notr="true">background-color: rgb(61, 56, 70);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Shape::Box</enum>
