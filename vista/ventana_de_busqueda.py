@@ -2,10 +2,6 @@ from PySide6.QtCore import Signal
 from PySide6.QtWidgets import QWidget, QMessageBox, QTableWidgetItem
 from ui.ventana_principal import Ui_Ventana_Principal
 from PySide6.QtWidgets import QCompleter
-from modelos.catalogo import Catalogo
-
-
-
 
 class VentanaPrincipal(QWidget):
     buscar = Signal(str)
