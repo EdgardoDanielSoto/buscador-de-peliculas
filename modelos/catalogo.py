@@ -13,8 +13,8 @@ class Catalogo:
     def obtener_peliculas(self):
         return self.__peliculas
 
-    @staticmethod
-    def obtener_contenido_del_archivo():
+
+    def obtener_contenido_del_archivo(self):
         ruta_archivo = os.path.join("recursos", "peliculas.json")
         try:
             with open(ruta_archivo, 'r', encoding='utf-8') as archivo:
@@ -28,15 +28,6 @@ class Catalogo:
             for actor in pelicula.obtener_atributos()['Actores']:
                 actores.append(actor)
         return sorted(set(actores))
-
-
-    def buscar_actor_por_nombre(self, nombre_actor):
-        actores_encontrados = []
-        for pelicula in self.__peliculas:
-            for actor in pelicula.obtener_atributos()['Actores']:
-                if nombre_actor.lower() in actor.lower():
-                    actores_encontrados.append(actor)
-        return actores_encontrados
 
 
     def buscar_peliculas_por_titulo(self, titulo):

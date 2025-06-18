@@ -10,14 +10,11 @@ class Controlador:
         self.__catalogo = Catalogo()
         self.__cargar_datos()
         self.__peliculas = self.__catalogo.obtener_peliculas()
-
-
         self.__ventana_principal = VentanaPrincipal(self.__catalogo)
         self.__ventana_principal.cargar_peliculas(self.__peliculas)
         self.__ventana_principal.buscar.connect(self.__buscar_peliculas)
         self.__ventana_principal.abrir_pelicula.connect(self.__mostrar_pelicula)
         self.__ventana_principal.buscar_pelicula_actores.connect(self.__buscar_por_actores)
-
         self.__ventana_pelicula = VentanaPelicula()
 
     def __cargar_datos(self):

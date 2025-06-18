@@ -2,6 +2,8 @@ from PySide6.QtCore import Signal
 from PySide6.QtWidgets import QWidget, QMessageBox, QTableWidgetItem
 from ui.ventana_principal import Ui_Ventana_Principal
 from PySide6.QtWidgets import QCompleter
+from modelos.catalogo import Catalogo
+
 
 
 
@@ -12,7 +14,7 @@ class VentanaPrincipal(QWidget):
 
 
     def __init__(self, catalogo):
-        super(VentanaPrincipal,self).__init__()
+        super().__init__()
         self.__catalogo = catalogo
         self.__ui = Ui_Ventana_Principal()
 
